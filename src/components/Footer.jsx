@@ -1,4 +1,4 @@
-import { Film, Github, Instagram, Twitter } from 'lucide-react';
+import { Film, Github, Instagram, Facebook, Database } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -27,21 +27,43 @@ const Footer = () => {
             <p className="font-bold text-sm uppercase leading-tight text-gray-600 max-w-xs mx-auto md:mx-0">
               Streaming platform gratis dengan vibe komik modern. Nonton film tanpa ribet!
             </p>
+            {/* API Source Credit */}
+            <a 
+              href="https://zeldvorik.ru/rebahin21" 
+              target="_blank" 
+              className="inline-flex items-center gap-2 text-[10px] font-black text-gray-400 hover:text-black uppercase transition-colors"
+            >
+              <Database size={12} /> Legacy API Source: Zeldvorik
+            </a>
           </div>
 
-          {/* Social Media - Sticker Style */}
+          {/* Social Media - Your Personal Links */}
           <div className="flex justify-center gap-4">
             {[
-              { icon: Github, color: 'bg-[#00FFFF]' },
-              { icon: Instagram, color: 'bg-[#FF00FF]' },
-              { icon: Twitter, color: 'bg-[#FFD700]' }
+              { 
+                icon: Github, 
+                color: 'bg-[#00FFFF]', 
+                url: 'https://github.com/F1kro' 
+              },
+              { 
+                icon: Instagram, 
+                color: 'bg-[#FF00FF]', 
+                url: 'https://instagram.com/_fiqro' 
+              },
+              { 
+                icon: Facebook, 
+                color: 'bg-[#FFD700]', 
+                url: 'https://facebook.com/fikro.najiah.7' 
+              }
             ].map((social, idx) => (
               <a 
                 key={idx}
-                href="#" 
-                className={`${social.color} p-4 border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all`}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${social.color} p-4 border-[3px] border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all flex items-center justify-center`}
               >
-                <social.icon size={24} strokeWidth={3} />
+                <social.icon size={24} strokeWidth={3} className="text-black" />
               </a>
             ))}
           </div>
@@ -54,16 +76,16 @@ const Footer = () => {
               </p>
             </div>
             <p className="mt-4 font-bold text-[10px] text-gray-400 uppercase tracking-widest">
-              Crafted with Power by Masfiq
+              Crafted with Power by Masfiq - Informatics UNRAM
             </p>
           </div>
         </div>
 
-        {/* Bottom Decorative Line */}
-        <div className="mt-16 pt-8 border-t-2 border-dashed border-gray-300 flex justify-center">
+        {/* Decorative Line */}
+        <div className="mt-16 pt-8 border-t-2 border-dashed border-gray-300 flex justify-center opacity-20">
            <div className="flex gap-2">
              {[...Array(5)].map((_, i) => (
-               <div key={i} className="w-3 h-3 bg-black rounded-none rotate-45 opacity-20"></div>
+               <div key={i} className="w-3 h-3 bg-black rotate-45"></div>
              ))}
            </div>
         </div>
