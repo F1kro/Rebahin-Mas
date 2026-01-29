@@ -11,13 +11,27 @@ const PlayerAlternative = () => {
   const [showWarning, setShowWarning] = useState(true);
   const [isTheaterMode, setIsTheaterMode] = useState(false);
 
-  const handleFullscreen = () => {
+  const handleFullscreen = async () => {
     const container = document.getElementById('player-container');
     if (container) {
-      if (document.fullscreenElement) {
-        document.exitFullscreen();
-      } else {
-        container.requestFullscreen().catch(err => console.error('Fullscreen error:', err));
+      try {
+        if (document.fullscreenElement) {
+          await document.exitFullscreen();
+          // Kembalikan ke orientasi default saat keluar
+          if (screen.orientation && screen.orientation.unlock) {
+            screen.orientation.unlock();
+          }
+        } else {
+          await container.requestFullscreen();
+          // Paksa ke Landscape saat Fullscreen di HP
+          if (screen.orientation && screen.orientation.lock) {
+            await screen.orientation.lock('landscape').catch(err => {
+              console.log("Auto-rotate ignored: ", err);
+            });
+          }
+        }
+      } catch (err) {
+        console.error('Error:', err);
       }
     }
   };
