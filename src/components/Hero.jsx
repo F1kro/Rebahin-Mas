@@ -82,10 +82,10 @@ const Hero = ({ movie }) => {
 
             <Link
               to={detailLink}
-              className="flex items-center space-x-3 px-8 md:px-10 py-4 bg-[var(--app-bg)] text-[var(--app-text)] border-[3px] border-black font-black uppercase italic tracking-wider shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all"
+              className="flex items-center  space-x-3 px-8 md:px-10 py-4 bg-yellow-400 text-white  border-[3px] border-black font-black uppercase italic tracking-wider shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all"
             >
               <Info className="w-6 h-6" />
-              <span className="text-lg md:text-xl">{t('details')}</span>
+              <span className="text-lg md:text-xl ">{t('details')}</span>
             </Link>
           </div>
         </div>

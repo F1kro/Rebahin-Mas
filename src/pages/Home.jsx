@@ -117,7 +117,7 @@ const Home = () => {
           <div className="relative z-10 text-center space-y-8">
             <div className="space-y-4">
               <div className="inline-block bg-yellow-300 border-2 border-black px-6 py-1 -rotate-2 mb-4">
-                <span className="font-black uppercase italic text-xl">Limited Time Offer!</span>
+                <span className="font-black uppercase italic text-xl">Buruan sebelum API nya Mokad Jir</span>
               </div>
               <h2 className="text-4xl md:text-7xl font-black uppercase italic tracking-tighter leading-none dark:text-white">
                 NONTON SEPUASNYA <br/> <span className="text-[#FF0000]">GRATIS TIAP HARI!</span>
@@ -140,7 +140,7 @@ const Home = () => {
 
           {/* Decorative Corner Price Tag */}
           <div className="absolute top-0 right-0 bg-black text-white p-4 font-black italic -rotate-12 translate-x-4 -translate-y-2">
-            ONLY $0.00
+            GRATIS NII! JIRLAH
           </div>
         </section>
       </div>
