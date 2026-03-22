@@ -1,5 +1,6 @@
 import MovieCard from './MovieCard';
 import Loading from './Loading';
+import { pickDetailPath } from '../lib/utils';
 
 const MovieGrid = ({ movies, loading }) => {
   if (loading) {
@@ -40,11 +41,14 @@ const MovieGrid = ({ movies, loading }) => {
 
       {/* Grid Container */}
       <div className="relative grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 md:gap-8 p-4">
-        {movies.map((movie, index) => (
-          <div key={`${movie.url}-${index}`} className={index % 2 === 0 ? 'rotate-1' : '-rotate-1'}>
-            <MovieCard movie={movie} />
-          </div>
-        ))}
+            {movies.map((movie, index) => {
+              const key = pickDetailPath(movie) || `${movie.id}-${index}` || index;
+              return (
+                <div key={key} className={index % 2 === 0 ? 'rotate-1' : '-rotate-1'}>
+                  <MovieCard movie={movie} />
+                </div>
+              );
+            })}
       </div>
     </div>
   );

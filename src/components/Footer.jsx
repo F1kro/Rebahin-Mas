@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="relative mt-20 border-t-[6px] border-black bg-white pt-16 pb-8">
+    <footer className="relative mt-20 border-t-[6px] border-black bg-white dark:bg-slate-950 dark:border-slate-800 pt-16 pb-8">
       {/* "The End" Style Badge */}
       <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-[#FF0000] border-[4px] border-black px-10 py-2 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] -rotate-2">
         <span className="text-white font-black text-2xl uppercase italic tracking-tighter">
@@ -20,18 +20,18 @@ const Footer = () => {
               <div className="w-12 h-12 bg-black border-2 border-black flex items-center justify-center rotate-3 group-hover:rotate-0 transition-transform">
                 <Film className="w-7 h-7 text-white" />
               </div>
-              <span className="text-3xl font-black uppercase italic tracking-tighter">
+              <span className="text-3xl font-black uppercase italic tracking-tighter text-black dark:text-white">
                 REBAHIN-MAS
               </span>
             </Link>
-            <p className="font-bold text-sm uppercase leading-tight text-gray-600 max-w-xs mx-auto md:mx-0">
+            <p className="font-bold text-sm uppercase leading-tight text-gray-600 max-w-xs mx-auto md:mx-0 dark:text-gray-300">
               Streaming platform gratis dengan vibe komik modern. Nonton film tanpa ribet!
             </p>
             {/* API Source Credit */}
             <a 
               href="https://zeldvorik.ru/rebahin21" 
               target="_blank" 
-              className="inline-flex items-center gap-2 text-[10px] font-black text-gray-400 hover:text-black uppercase transition-colors"
+              className="inline-flex items-center gap-2 text-[10px] font-black text-gray-400 hover:text-black uppercase transition-colors dark:text-gray-300"
             >
               <Database size={12} /> Legacy API Source: Zeldvorik
             </a>
@@ -71,11 +71,11 @@ const Footer = () => {
           {/* Copyright Area */}
           <div className="text-center md:text-right">
             <div className="inline-block border-2 border-black bg-yellow-300 p-2 rotate-1 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
-              <p className="font-black text-xs uppercase italic text-black">
+              <p className="font-black text-xs uppercase italic text-black dark:text-white">
                 © 2026 REBAHIN-MAS. ALL RIGHTS RESERVED.
               </p>
             </div>
-            <p className="mt-4 font-bold text-[10px] text-gray-400 uppercase tracking-widest">
+            <p className="mt-4 font-bold text-[10px] text-gray-400 uppercase tracking-widest dark:text-gray-400">
               Crafted with Power by Masfiq - Informatics UNRAM
             </p>
           </div>

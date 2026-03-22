@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { searchMovies } from '../services/api';
+import { api } from '../services/api';
 import MovieGrid from '../components/MovieGrid';
 import { FiSearch } from 'react-icons/fi';
 
@@ -20,7 +20,7 @@ const Search = () => {
   const loadResults = async () => {
     setLoading(true);
     try {
-      const data = await searchMovies(query);
+      const data = await api.search(query);
       if (data.success) {
         setResults(data.data || []);
       }

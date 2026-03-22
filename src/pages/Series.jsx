@@ -3,6 +3,7 @@ import { api } from '../services/api';
 import MovieCard from '../components/MovieCard';
 import Loading from '../components/Loading';
 import { ChevronLeft, ChevronRight, Tv } from 'lucide-react';
+import { pickDetailPath } from '../lib/utils';
 
 const Series = () => {
   const [series, setSeries] = useState([]);
@@ -26,7 +27,7 @@ const Series = () => {
   if (loading) return <Loading />;
 
   return (
-    <div className="min-h-screen pt-24 pb-20 bg-[#fdf6e3]">
+    <div className="min-h-screen pt-24 pb-20 bg-[#fdf6e3] dark:bg-slate-950 dark:text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header - Comic Series Anthology Style */}
@@ -52,11 +53,14 @@ const Series = () => {
         {series.length > 0 ? (
           <>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-8 mb-16">
-              {series.map((show, idx) => (
-                <div key={show.slug} className={idx % 2 !== 0 ? 'rotate-1' : '-rotate-1'}>
-                  <MovieCard movie={show} />
-                </div>
-              ))}
+              {series.map((show, idx) => {
+                const key = pickDetailPath(show) || `${show.id ?? show.pid ?? idx}-${idx}`;
+                return (
+                  <div key={key} className={idx % 2 !== 0 ? 'rotate-1' : '-rotate-1'}>
+                    <MovieCard movie={show} />
+                  </div>
+                );
+              })}
             </div>
 
             {/* Pagination - Comic Navigation */}

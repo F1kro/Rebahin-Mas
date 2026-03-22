@@ -25,6 +25,22 @@
     --ring: 346 77% 50%;
     --radius: 0.5rem;
   }
+  --app-bg: #fdf6e3;
+  --app-text: #000000;
+}
+
+@layer base {
+  .theme-dark {
+    --app-bg: #030712;
+    --app-text: #f4f4f4;
+  }
+}
+
+@layer base {
+  body.theme-dark {
+    background-color: var(--app-bg);
+    color: var(--app-text);
+  }
 }
 
 @layer base {

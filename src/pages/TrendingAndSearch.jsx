@@ -4,10 +4,13 @@ import { api } from '../services/api';
 import MovieCard from '../components/MovieCard';
 import Loading from '../components/Loading'; // Pakai loading comic
 import { TrendingUp, Search as SearchIcon, Flame } from 'lucide-react';
+import { useTranslation } from '../lib/i18n';
+import { pickDetailPath } from '../lib/utils';
 
 export const Trending = () => {
   const [trending, setTrending] = useState([]);
   const [loading, setLoading] = useState(true);
+  const t = useTranslation();
 
   useEffect(() => {
     const fetchTrending = async () => {
@@ -24,7 +27,7 @@ export const Trending = () => {
   if (loading) return <Loading />;
 
   return (
-    <div className="min-h-screen pt-24 pb-20 bg-[#fdf6e3]">
+    <div className="min-h-screen pt-24 pb-20 bg-[#fdf6e3] dark:bg-slate-950 dark:text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header ala Koran Komik */}
@@ -32,7 +35,7 @@ export const Trending = () => {
           <div className="inline-block bg-[#FFD700] border-[4px] border-black p-6 -rotate-2 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
             <h1 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter flex items-center gap-4">
               <Flame className="w-10 h-10 md:w-14 md:h-14 text-[#FF0000]" fill="currentColor" />
-              Top Global Hits!
+              {t('trendingNow')}
             </h1>
           </div>
           <p className="mt-6 font-black text-black uppercase tracking-[0.3em] bg-white border-2 border-black inline-block px-4 py-1">
@@ -42,11 +45,14 @@ export const Trending = () => {
 
         {trending.length > 0 ? (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-8">
-            {trending.map((movie, idx) => (
-              <div key={movie.slug} className={idx % 2 === 0 ? 'rotate-1' : '-rotate-1'}>
-                <MovieCard movie={movie} />
-              </div>
-            ))}
+            {trending.map((movie, idx) => {
+              const key = pickDetailPath(movie) || `${movie.id ?? movie.pid ?? idx}-${idx}`;
+              return (
+                <div key={key} className={idx % 2 === 0 ? 'rotate-1' : '-rotate-1'}>
+                  <MovieCard movie={movie} />
+                </div>
+              );
+            })}
           </div>
         ) : (
           <div className="text-center py-20 border-[4px] border-dashed border-black">
@@ -84,7 +90,7 @@ export const Search = () => {
   if (loading) return <Loading />;
 
   return (
-    <div className="min-h-screen pt-24 pb-20 bg-[#fdf6e3]">
+    <div className="min-h-screen pt-24 pb-20 bg-[#fdf6e3] dark:bg-slate-950 dark:text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header ala Detective Investigation */}
@@ -109,11 +115,14 @@ export const Search = () => {
 
         {results.length > 0 ? (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-8">
-            {results.map((movie, idx) => (
-              <div key={movie.slug} className={idx % 2 !== 0 ? 'rotate-1' : '-rotate-1'}>
-                <MovieCard movie={movie} />
-              </div>
-            ))}
+            {results.map((movie, idx) => {
+              const key = pickDetailPath(movie) || `${movie.id ?? movie.pid ?? idx}-${idx}`;
+              return (
+                <div key={key} className={idx % 2 !== 0 ? 'rotate-1' : '-rotate-1'}>
+                  <MovieCard movie={movie} />
+                </div>
+              );
+            })}
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center py-20">

@@ -2,13 +2,13 @@ const Loading = () => {
   return (
     /* h-[70vh] memastikan container ini punya tinggi 70% dari layar 
        sehingga konten di dalamnya bisa benar-benar di tengah */
-    <div className="flex justify-center items-center h-[70vh] w-full bg-transparent">
+    <div className="flex justify-center items-center h-[70vh] w-full bg-transparent dark:bg-slate-950">
       <div className="relative flex flex-col items-center">
         {/* Comic Thinking Bubble / Blast Effect */}
         <div className="relative group">
           <div className="absolute inset-0 bg-black rounded-none translate-x-2 translate-y-2"></div>
           
-          <div className="relative bg-white border-[4px] border-black px-8 py-6 flex flex-col items-center animate-bounce">
+          <div className="relative bg-white border-[4px] border-black px-8 py-6 flex flex-col items-center animate-bounce dark:bg-slate-900 dark:border-slate-700 text-black dark:text-white">
             <div className="flex space-x-2 mb-3">
               <div className="w-4 h-4 bg-[#FF0000] border-2 border-black animate-[ping_1s_infinite]"></div>
               <div className="w-4 h-4 bg-[#FFD700] border-2 border-black animate-[ping_1.2s_infinite]"></div>
